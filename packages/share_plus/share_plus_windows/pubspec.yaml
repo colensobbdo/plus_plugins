@@ -9,7 +9,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  share_plus_platform_interface: ^2.0.0
+  share_plus_platform_interface:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_platform_interface
   flutter:
     sdk: flutter
   meta: ^1.3.0

@@ -14,7 +14,13 @@ class ShareWindows extends SharePlatform {
     String text, {
     String? subject,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) async {
+    if (onAfterShare != null) {
+      throw UnimplementedError(
+        'share.onAfterShare callback has not been implemented on Windows.');
+    }
+
     final queryParameters = {
       if (subject != null) 'subject': subject,
       'body': text,
@@ -44,6 +50,7 @@ class ShareWindows extends SharePlatform {
     String? subject,
     String? text,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     throw UnimplementedError(
         'shareFiles() has not been implemented on Windows.');

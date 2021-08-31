@@ -35,11 +35,13 @@ class SharePlatform extends PlatformInterface {
     String text, {
     String? subject,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     return _instance.share(
       text,
       subject: subject,
       sharePositionOrigin: sharePositionOrigin,
+      onAfterShare: onAfterShare,
     );
   }
 
@@ -50,6 +52,7 @@ class SharePlatform extends PlatformInterface {
     String? subject,
     String? text,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     return _instance.shareFiles(
       paths,
@@ -57,6 +60,7 @@ class SharePlatform extends PlatformInterface {
       subject: subject,
       text: text,
       sharePositionOrigin: sharePositionOrigin,
+      onAfterShare: onAfterShare,
     );
   }
 }

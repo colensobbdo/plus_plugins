@@ -6,6 +6,8 @@
 #import "LinkPresentation/LPLinkMetadata.h"
 
 static NSString *const PLATFORM_CHANNEL = @"dev.fluttercommunity.plus/share";
+static NSString *const MESSAGE_ONAFTERSHARE = @"onaftershare";
+static FlutterMethodChannel* shareChannel;
 
 static UIViewController *RootViewController() {
   return [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -122,9 +124,8 @@ static UIViewController *TopViewControllerForViewController(UIViewController *vi
 @implementation FLTSharePlusPlugin
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar {
-  FlutterMethodChannel *shareChannel =
-      [FlutterMethodChannel methodChannelWithName:PLATFORM_CHANNEL
-                                  binaryMessenger:registrar.messenger];
+  shareChannel = [FlutterMethodChannel methodChannelWithName:PLATFORM_CHANNEL
+                                             binaryMessenger:registrar.messenger];
 
   [shareChannel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
     NSDictionary *arguments = [call arguments];
@@ -203,6 +204,16 @@ static UIViewController *TopViewControllerForViewController(UIViewController *vi
   if (!CGRectIsEmpty(origin)) {
     activityViewController.popoverPresentationController.sourceRect = origin;
   }
+  
+  activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+    if (completed) {
+      NSLog(@"the share activity: %@ was completed", activityType);
+      [shareChannel invokeMethod:MESSAGE_ONAFTERSHARE arguments:nil];
+    } else {
+      NSLog(@"the share activity: %@ was NOT completed", activityType);
+    }
+  };
+
   [controller presentViewController:activityViewController animated:YES completion:nil];
 }
 

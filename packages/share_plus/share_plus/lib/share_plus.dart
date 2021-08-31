@@ -60,12 +60,14 @@ class Share {
     String text, {
     String? subject,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     assert(text.isNotEmpty);
     return _platform.share(
       text,
       subject: subject,
       sharePositionOrigin: sharePositionOrigin,
+      onAfterShare: onAfterShare,
     );
   }
 
@@ -87,6 +89,7 @@ class Share {
     String? subject,
     String? text,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     assert(paths.isNotEmpty);
     assert(paths.every((element) => element.isNotEmpty));
@@ -96,6 +99,7 @@ class Share {
       subject: subject,
       text: text,
       sharePositionOrigin: sharePositionOrigin,
+      onAfterShare: onAfterShare,
     );
   }
 }

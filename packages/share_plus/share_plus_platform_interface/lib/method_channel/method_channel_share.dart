@@ -18,12 +18,32 @@ class MethodChannelShare extends SharePlatform {
   static const MethodChannel channel =
       MethodChannel('dev.fluttercommunity.plus/share');
 
+  static List<VoidCallback> _onAfterShareListeners = [];
+
+  static Future<void> _onMethodCallHandler(MethodCall call) async {
+    print("MethodChannelShare :: _onMethodCalled $call");
+
+    switch (call.method) {
+      case "onaftershare":
+        _onAfterShareListeners.toList().forEach((element) {
+          element();
+
+          _onAfterShareListeners.remove(element);
+        });
+        break;
+      default:
+        print(
+            "MethodChannelShare :: _onMethodCalled :: unknown method called ${call.method}");
+    }
+  }
+
   /// Summons the platform's share sheet to share text.
   @override
   Future<void> share(
     String text, {
     String? subject,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     assert(text.isNotEmpty);
     final params = <String, dynamic>{
@@ -38,6 +58,13 @@ class MethodChannelShare extends SharePlatform {
       params['originHeight'] = sharePositionOrigin.height;
     }
 
+    if (onAfterShare != null) {
+      channel.setMethodCallHandler(_onMethodCallHandler);
+
+      _onAfterShareListeners.clear();
+      _onAfterShareListeners.add(onAfterShare);
+    }
+
     return channel.invokeMethod<void>('share', params);
   }
 
@@ -49,6 +76,7 @@ class MethodChannelShare extends SharePlatform {
     String? subject,
     String? text,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     assert(paths.isNotEmpty);
     assert(paths.every((element) => element.isNotEmpty));
@@ -66,6 +94,13 @@ class MethodChannelShare extends SharePlatform {
       params['originY'] = sharePositionOrigin.top;
       params['originWidth'] = sharePositionOrigin.width;
       params['originHeight'] = sharePositionOrigin.height;
+    }
+
+    if (onAfterShare != null) {
+      channel.setMethodCallHandler(_onMethodCallHandler);
+
+      _onAfterShareListeners.clear();
+      _onAfterShareListeners.add(onAfterShare);
     }
 
     return channel.invokeMethod('shareFiles', params);

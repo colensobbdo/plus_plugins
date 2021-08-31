@@ -25,7 +25,13 @@ class SharePlusPlugin extends SharePlatform {
     String text, {
     String? subject,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) async {
+    if (onAfterShare != null) {
+      throw UnimplementedError(
+        'share.onAfterShare callback has not been implemented on Windows.');
+    }
+    
     try {
       await _navigator.share({'title': subject, 'text': text});
     } on NoSuchMethodError catch (_) {
@@ -60,6 +66,7 @@ class SharePlusPlugin extends SharePlatform {
     String? subject,
     String? text,
     Rect? sharePositionOrigin,
+    VoidCallback? onAfterShare,
   }) {
     throw UnimplementedError('shareFiles() has not been implemented on Web.');
   }

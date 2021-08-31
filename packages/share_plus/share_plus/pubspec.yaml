@@ -26,11 +26,26 @@ dependencies:
   mime: ^1.0.0
   flutter:
     sdk: flutter
-  share_plus_platform_interface: ^2.0.0
-  share_plus_linux: ^2.0.0
-  share_plus_macos: ^2.0.0
-  share_plus_windows: ^2.0.0
-  share_plus_web: ^2.0.0
+  share_plus_platform_interface:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_platform_interface
+  share_plus_linux:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_linux
+  share_plus_macos:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_macos
+  share_plus_windows:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_windows
+  share_plus_web:
+    git:
+      url: https://github.com/colensobbdo/plus_plugins.git
+      path: packages/share_plus/share_plus_web
 
 dev_dependencies:
   flutter_test:
