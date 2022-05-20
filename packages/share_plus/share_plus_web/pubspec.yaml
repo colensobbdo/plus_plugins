@@ -2,7 +2,7 @@ name: share_plus_web
 description: Web platform implementation of share_plus
 homepage: https://plus.fluttercommunity.dev/
 repository: https://github.com/fluttercommunity/plus_plugins/tree/main/packages/
-version: 2.0.4
+version: 3.0.0
 
 flutter:
   plugin:
@@ -26,7 +26,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.10.0
+  flutter_lints: ^1.0.4
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
