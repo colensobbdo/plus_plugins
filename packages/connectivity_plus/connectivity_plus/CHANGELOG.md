@@ -1,3 +1,55 @@
+## 2.3.0
+
+- Add iOS ConnectivityProvider based on NWPathMonitor for iOS 12+.
+
+## 2.2.2
+
+- Reachability.swift ".unavailable" for iOS is deprecated.
+
+## 2.2.1
+
+- Bump `nm` plugin to 0.5.0 (connectivity_plus_linux)
+- Fix embedding issue in example
+
+## 2.2.0
+
+- Add bluetooth as connectivity result. Supported on Android, Linux, and Web
+
+## 2.1.0
+
+- Migrated iOS plugin to Swift
+- Removed dependency to old Reachability pod
+- Added dependency to Reachability.swift pod
+
+## 2.0.3
+
+- Add Gradle wrapper to Android plugin
+
+## 2.0.2
+
+- Fix for error: lambda expressions are not supported in -source 7
+
+## 2.0.1
+
+- Upgrade Android compile SDK version
+- Several code improvements
+
+## 2.0.0
+
+- Remove deprecated method `registerWith` (of Android v1 embedding)
+
+## 1.4.0
+
+- [MacOS]: Backport to macOS 10.11
+
+## 1.3.0
+
+- Add ethernet as connectivity result. Supported on Android, iOS, Windows, Linux, macOS, and Web
+
+## 1.2.0
+
+- migrate integration_test to flutter sdk
+
 ## 1.1.0
 
 - Add ethernet as connectivity result. Supported on Android, Linux, macOS, and Web

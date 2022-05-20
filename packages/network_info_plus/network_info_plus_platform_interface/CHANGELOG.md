@@ -1,3 +1,12 @@
+## 1.1.2
+
+- Bump platform plugin_platform_interface to 2.1.2
+- Set min Flutter version to 1.20.0
+
+## 1.1.1
+
+- Update Flutter dependencies
+
 ## 1.1.0
 
 - Adding IPv6 method channel
