@@ -1,3 +1,15 @@
+## 1.2.2
+
+- Fix connectivity stream can not be reused (after hot-restart) on MacOS 10.14+.
+
+## 1.2.1
+
+- Update license headers.
+
+## 1.2.0
+
+- Backport to macOS 10.11
+
 ## 1.1.0
 
 - Add ethernet as connectivity result.
